@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Destination
+from .models import Destination,Person
 # Create your views here.
 
 
@@ -26,3 +26,24 @@ def index(request):
     dests = [dest1, dest2, dest3]
 
     return render(request, "index.html", {'dests': dests})
+
+def about(request):
+    """  
+    person1 = Person()
+    person1.first_name = 'Prasanna'
+    person1.last_name = "Nashi"
+    person1.address= "Gokak"
+    person1.company = "tcs"
+    person1.phone_no = 7022425616
+
+    person2 = Person()
+    person2.first_name = 'Ajit'
+    person2.last_name = "Hosamani"
+    person2.address= "Island"
+    person2.company = "Marriot"
+    person2.phone_no = 7022425555
+
+    person = [person1, person2]
+    """
+    person = Person.objects.values()
+    return render(request,"about.html",{'person': person })

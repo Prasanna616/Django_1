@@ -1,13 +1,27 @@
+#Python official runtime image 
 FROM python:3.7.16-slim-bullseye
 
-COPY . /tmp
+#Set environment variable
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONNUNBUFFERED 1
 
-WORKDIR /tmp
+#Set the working directory to /app
+WORKDIR /app
 
-RUN apt-get update
+#copy the requirement file into current directory
+COPY requirement.txt .
 
-RUN apt install libpq-dev --yes
-
+#Install needed packages specified in requirement
 RUN pip install -r requirement.txt
 
-ENTRYPOINT ["manage.py"] 
+#Copy current working directory contents into the conatiner at /app
+COPY . /app/
+
+#Run the Django migrations
+RUN python manage.py migrate
+
+#Expose port 8000 to outside world
+EXPOSE 8000
+
+#start the django development server
+CMD ["python","manage.py","runserver","0.0.0.0:8000"]

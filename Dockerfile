@@ -9,7 +9,7 @@ ENV PYTHONNUNBUFFERED 1
 WORKDIR /app
 
 #copy the requirement file into current directory
-COPY requirement.txt .
+COPY requirement1.txt .
 
 #Install needed packages specified in requirement
 RUN pip install -r requirement1.txt

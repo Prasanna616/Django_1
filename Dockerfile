@@ -12,7 +12,7 @@ WORKDIR /app
 COPY requirement.txt .
 
 #Install needed packages specified in requirement
-RUN pip install -r requirement.txt
+RUN pip install -r requirement1.txt
 
 #Copy current working directory contents into the conatiner at /app
 COPY . /app/

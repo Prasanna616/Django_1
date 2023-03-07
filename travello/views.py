@@ -23,7 +23,12 @@ def index(request):
     dest3.img = 'destination_3.jpg'
     dest3.price = 750
 
-    dests = [dest1, dest2, dest3]
+    dest4 = Destination()
+    dest4.name = 'Gokak'
+    dest4.desc = 'Karadantu nadu'
+    dest4.price = 1000 
+
+    dests = [dest1, dest2, dest3,dest4]
 
     return render(request, "index.html", {'dests': dests})
 

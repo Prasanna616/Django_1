@@ -52,3 +52,6 @@ def about(request):
     """
     person = Person.objects.values()
     return render(request,"about.html",{'person': person })
+
+def ecommerce(request):
+    return render(request,"ecommerce.html")

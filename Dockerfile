@@ -17,6 +17,8 @@ RUN pip install -r requirement1.txt
 #Copy current working directory contents into the conatiner at /app
 COPY . /app/
 
+RUN apt install curl
+
 #Run the Django migrations
 RUN python manage.py migrate
 
